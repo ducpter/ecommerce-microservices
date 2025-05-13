@@ -45,17 +45,71 @@ jobs:
             --region ${{ env.GKE_ZONE }}
 
       # 5. Build and push Docker image
-      - name: 'Build and push Docker image'
+      - name: 'Build and push Docker image for api-gateway'
         run: |
-          IMAGE_URI="${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/${{ env.IMAGE }}:${{ github.sha }}"
+          IMAGE_URI="${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/api-gateway:${{ github.sha }}"
           echo "IMAGE_URI: $IMAGE_URI"
-          docker build -t $IMAGE_URI .
+          docker build -t $IMAGE_URI ./api-gateway
           docker push $IMAGE_URI
         env:
           PROJECT_ID: ${{ env.PROJECT_ID }}
           GAR_LOCATION: ${{ env.GAR_LOCATION }}
           REPOSITORY: ${{ env.REPOSITORY }}
-          IMAGE: ${{ env.IMAGE }}
+
+      - name: 'Build and push Docker image for discovery-server'
+        run: |
+          IMAGE_URI="${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/discovery-server:${{ github.sha }}"
+          echo "IMAGE_URI: $IMAGE_URI"
+          docker build -t $IMAGE_URI ./discovery-server
+          docker push $IMAGE_URI
+        env:
+          PROJECT_ID: ${{ env.PROJECT_ID }}
+          GAR_LOCATION: ${{ env.GAR_LOCATION }}
+          REPOSITORY: ${{ env.REPOSITORY }}
+
+      - name: 'Build and push Docker image for product-service'
+        run: |
+          IMAGE_URI="${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/product-service:${{ github.sha }}"
+          echo "IMAGE_URI: $IMAGE_URI"
+          docker build -t $IMAGE_URI ./product-service
+          docker push $IMAGE_URI
+        env:
+          PROJECT_ID: ${{ env.PROJECT_ID }}
+          GAR_LOCATION: ${{ env.GAR_LOCATION }}
+          REPOSITORY: ${{ env.REPOSITORY }}
+
+      - name: 'Build and push Docker image for order-service'
+        run: |
+          IMAGE_URI="${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/order-service:${{ github.sha }}"
+          echo "IMAGE_URI: $IMAGE_URI"
+          docker build -t $IMAGE_URI ./order-service
+          docker push $IMAGE_URI
+        env:
+          PROJECT_ID: ${{ env.PROJECT_ID }}
+          GAR_LOCATION: ${{ env.GAR_LOCATION }}
+          REPOSITORY: ${{ env.REPOSITORY }}
+
+      - name: 'Build and push Docker image for inventory-service'
+        run: |
+          IMAGE_URI="${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/inventory-service:${{ github.sha }}"
+          echo "IMAGE_URI: $IMAGE_URI"
+          docker build -t $IMAGE_URI ./inventory-service
+          docker push $IMAGE_URI
+        env:
+          PROJECT_ID: ${{ env.PROJECT_ID }}
+          GAR_LOCATION: ${{ env.GAR_LOCATION }}
+          REPOSITORY: ${{ env.REPOSITORY }}
+
+      - name: 'Build and push Docker image for notification-service'
+        run: |
+          IMAGE_URI="${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/notification-service:${{ github.sha }}"
+          echo "IMAGE_URI: $IMAGE_URI"
+          docker build -t $IMAGE_URI ./notification-service
+          docker push $IMAGE_URI
+        env:
+          PROJECT_ID: ${{ env.PROJECT_ID }}
+          GAR_LOCATION: ${{ env.GAR_LOCATION }}
+          REPOSITORY: ${{ env.REPOSITORY }}
 
       # 6. Deploy to GKE
       - name: 'Deploy to GKE'
