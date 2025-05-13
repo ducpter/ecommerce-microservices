@@ -44,68 +44,115 @@ jobs:
           gcloud container clusters get-credentials ${{ env.GKE_CLUSTER }} \
             --region ${{ env.GKE_ZONE }}
 
-      # 5. Build and push Docker image
+      # Build JAR for api-gateway
+      - name: Build JAR for api-gateway
+        run: |
+          cd api-gateway
+          mvn -B -DskipTests package
+          cd ..
+
       - name: 'Build and push Docker image for api-gateway'
         run: |
           IMAGE_URI="${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/api-gateway:${{ github.sha }}"
-          echo "IMAGE_URI: $IMAGE_URI"
-          docker build -t $IMAGE_URI ./api-gateway
+          cd api-gateway
+          docker build -t $IMAGE_URI .
           docker push $IMAGE_URI
+          cd ..
         env:
           PROJECT_ID: ${{ env.PROJECT_ID }}
           GAR_LOCATION: ${{ env.GAR_LOCATION }}
           REPOSITORY: ${{ env.REPOSITORY }}
+
+      # Build JAR for discovery-server
+      - name: Build JAR for discovery-server
+        run: |
+          cd discovery-server
+          mvn -B -DskipTests package
+          cd ..
 
       - name: 'Build and push Docker image for discovery-server'
         run: |
           IMAGE_URI="${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/discovery-server:${{ github.sha }}"
-          echo "IMAGE_URI: $IMAGE_URI"
-          docker build -t $IMAGE_URI ./discovery-server
+          cd discovery-server
+          docker build -t $IMAGE_URI .
           docker push $IMAGE_URI
+          cd ..
         env:
           PROJECT_ID: ${{ env.PROJECT_ID }}
           GAR_LOCATION: ${{ env.GAR_LOCATION }}
           REPOSITORY: ${{ env.REPOSITORY }}
+
+      # Build JAR for product-service
+      - name: Build JAR for product-service
+        run: |
+          cd product-service
+          mvn -B -DskipTests package
+          cd ..
 
       - name: 'Build and push Docker image for product-service'
         run: |
           IMAGE_URI="${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/product-service:${{ github.sha }}"
-          echo "IMAGE_URI: $IMAGE_URI"
-          docker build -t $IMAGE_URI ./product-service
+          cd product-service
+          docker build -t $IMAGE_URI .
           docker push $IMAGE_URI
+          cd ..
         env:
           PROJECT_ID: ${{ env.PROJECT_ID }}
           GAR_LOCATION: ${{ env.GAR_LOCATION }}
           REPOSITORY: ${{ env.REPOSITORY }}
+
+      # Build JAR for order-service
+      - name: Build JAR for order-service
+        run: |
+          cd order-service
+          mvn -B -DskipTests package
+          cd ..
 
       - name: 'Build and push Docker image for order-service'
         run: |
           IMAGE_URI="${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/order-service:${{ github.sha }}"
-          echo "IMAGE_URI: $IMAGE_URI"
-          docker build -t $IMAGE_URI ./order-service
+          cd order-service
+          docker build -t $IMAGE_URI .
           docker push $IMAGE_URI
+          cd ..
         env:
           PROJECT_ID: ${{ env.PROJECT_ID }}
           GAR_LOCATION: ${{ env.GAR_LOCATION }}
           REPOSITORY: ${{ env.REPOSITORY }}
+
+      # Build JAR for inventory-service
+      - name: Build JAR for inventory-service
+        run: |
+          cd inventory-service
+          mvn -B -DskipTests package
+          cd ..
 
       - name: 'Build and push Docker image for inventory-service'
         run: |
           IMAGE_URI="${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/inventory-service:${{ github.sha }}"
-          echo "IMAGE_URI: $IMAGE_URI"
-          docker build -t $IMAGE_URI ./inventory-service
+          cd inventory-service
+          docker build -t $IMAGE_URI .
           docker push $IMAGE_URI
+          cd ..
         env:
           PROJECT_ID: ${{ env.PROJECT_ID }}
           GAR_LOCATION: ${{ env.GAR_LOCATION }}
           REPOSITORY: ${{ env.REPOSITORY }}
 
+      # Build JAR for notification-service
+      - name: Build JAR for notification-service
+        run: |
+          cd notification-service
+          mvn -B -DskipTests package
+          cd ..
+
       - name: 'Build and push Docker image for notification-service'
         run: |
           IMAGE_URI="${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/notification-service:${{ github.sha }}"
-          echo "IMAGE_URI: $IMAGE_URI"
-          docker build -t $IMAGE_URI ./notification-service
+          cd notification-service
+          docker build -t $IMAGE_URI .
           docker push $IMAGE_URI
+          cd ..
         env:
           PROJECT_ID: ${{ env.PROJECT_ID }}
           GAR_LOCATION: ${{ env.GAR_LOCATION }}
