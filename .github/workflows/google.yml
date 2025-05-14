@@ -44,16 +44,20 @@ jobs:
       # Build and push the Docker images for all services
       - name: Build and Push Docker Images
         env:
-          GOOGLE_PROJECT: ${{ secrets.GOOGLE_PROJECT }}
+          GOOGLE_PROJECT: 'silicon-airlock-456802-p4'
         run: |
           # Build images for each service
-          docker build --no-cache --build-arg=SERVICE_NAME=api-gateway --tag=asia-southeast1-docker.pkg.dev/${{ secrets.GOOGLE_PROJECT }}/demo/api-gateway:latest .
-          docker build --no-cache --build-arg=SERVICE_NAME=discovery-server --tag=asia-southeast1-docker.pkg.dev/${{ secrets.GOOGLE_PROJECT }}/demo/discovery-server:latest .
-          docker build --no-cache --build-arg=SERVICE_NAME=product-service --tag=asia-southeast1-docker.pkg.dev/${{ secrets.GOOGLE_PROJECT }}/demo/product-service:latest .
-          docker build --no-cache --build-arg=SERVICE_NAME=order-service --tag=asia-southeast1-docker.pkg.dev/${{ secrets.GOOGLE_PROJECT }}/demo/order-service:latest .
-          docker build --no-cache --build-arg=SERVICE_NAME=inventory-service --tag=asia-southeast1-docker.pkg.dev/${{ secrets.GOOGLE_PROJECT }}/demo/inventory-service:latest .
-          docker build --no-cache --build-arg=SERVICE_NAME=notification-service --tag=asia-southeast1-docker.pkg.dev/${{ secrets.GOOGLE_PROJECT }}/demo/notification-service:latest .
+          docker build --no-cache --build-arg=SERVICE_NAME=api-gateway --tag=asia-southeast1-docker.pkg.dev/silicon-airlock-456802-p4/demo/api-gateway:latest .
+          docker build --no-cache --build-arg=SERVICE_NAME=discovery-server --tag=asia-southeast1-docker.pkg.dev/silicon-airlock-456802-p4/demo/discovery-server:latest .
+          docker build --no-cache --build-arg=SERVICE_NAME=product-service --tag=asia-southeast1-docker.pkg.dev/silicon-airlock-456802-p4/demo/product-service:latest .
+          docker build --no-cache --build-arg=SERVICE_NAME=order-service --tag=asia-southeast1-docker.pkg.dev/silicon-airlock-456802-p4/demo/order-service:latest .
+          docker build --no-cache --build-arg=SERVICE_NAME=inventory-service --tag=asia-southeast1-docker.pkg.dev/silicon-airlock-456802-p4/demo/inventory-service:latest .
+          docker build --no-cache --build-arg=SERVICE_NAME=notification-service --tag=asia-southeast1-docker.pkg.dev/silicon-airlock-456802-p4/demo/notification-service:latest .
 
           # Push images to Google Container Registry
-          docker push asia-southeast1-docker.pkg.dev/${{ secrets.GOOGLE_PROJECT }}/demo/api-gateway:latest
-          docker push asia-southeast1-d
+          docker push asia-southeast1-docker.pkg.dev/silicon-airlock-456802-p4/demo/api-gateway:latest
+          docker push asia-southeast1-docker.pkg.dev/silicon-airlock-456802-p4/demo/discovery-server:latest
+          docker push asia-southeast1-docker.pkg.dev/silicon-airlock-456802-p4/demo/product-service:latest
+          docker push asia-southeast1-docker.pkg.dev/silicon-airlock-456802-p4/demo/order-service:latest
+          docker push asia-southeast1-docker.pkg.dev/silicon-airlock-456802-p4/demo/inventory-service:latest
+          docker push asia-southeast1-docker.pkg.dev/silicon-airlock-456802-p4/demo/notification-service:latest
