@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: order-service
-          image: ibatulanandjp/order-service:latest
+          image: ducp96064/order-service:latest
           ports:
             - containerPort: 8080
           env:
