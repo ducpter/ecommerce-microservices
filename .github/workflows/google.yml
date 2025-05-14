@@ -73,6 +73,10 @@ jobs:
           mvn -B -DskipTests package
           cd ..
 
+        # Authenticate Docker with Google Cloud
+      - name: Authenticate Docker
+        run: gcloud auth configure-docker asia-southeast1-docker.pkg.dev
+
       # Build and push the Docker images for all services
       - name: Build and Push Docker Images
         run: |
