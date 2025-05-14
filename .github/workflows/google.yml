@@ -47,17 +47,17 @@ jobs:
           GOOGLE_PROJECT: 'silicon-airlock-456802-p4'
         run: |
           # Build images for each service
-          docker build --no-cache --build-arg=SERVICE_NAME=api-gateway --tag=asia-southeast1-docker.pkg.dev/silicon-airlock-456802-p4/demo/api-gateway:latest .
-          docker build --no-cache --build-arg=SERVICE_NAME=discovery-server --tag=asia-southeast1-docker.pkg.dev/silicon-airlock-456802-p4/demo/discovery-server:latest .
-          docker build --no-cache --build-arg=SERVICE_NAME=product-service --tag=asia-southeast1-docker.pkg.dev/silicon-airlock-456802-p4/demo/product-service:latest .
-          docker build --no-cache --build-arg=SERVICE_NAME=order-service --tag=asia-southeast1-docker.pkg.dev/silicon-airlock-456802-p4/demo/order-service:latest .
-          docker build --no-cache --build-arg=SERVICE_NAME=inventory-service --tag=asia-southeast1-docker.pkg.dev/silicon-airlock-456802-p4/demo/inventory-service:latest .
-          docker build --no-cache --build-arg=SERVICE_NAME=notification-service --tag=asia-southeast1-docker.pkg.dev/silicon-airlock-456802-p4/demo/notification-service:latest .
+          docker build --no-cache -t asia-southeast1-docker.pkg.dev/silicon-airlock-456802-p4/samples/api-gateway:latest ./api-gateway
+          docker build --no-cache -t asia-southeast1-docker.pkg.dev/silicon-airlock-456802-p4/samples/discovery-server:latest ./discovery-server
+          docker build --no-cache -t asia-southeast1-docker.pkg.dev/silicon-airlock-456802-p4/samples/product-service:latest ./product-service
+          docker build --no-cache -t asia-southeast1-docker.pkg.dev/silicon-airlock-456802-p4/samples/order-service:latest ./order-service
+          docker build --no-cache -t asia-southeast1-docker.pkg.dev/silicon-airlock-456802-p4/samples/inventory-service:latest ./inventory-service
+          docker build --no-cache -t asia-southeast1-docker.pkg.dev/silicon-airlock-456802-p4/samples/notification-service:latest ./notification-service
 
           # Push images to Google Container Registry
-          docker push asia-southeast1-docker.pkg.dev/silicon-airlock-456802-p4/demo/api-gateway:latest
-          docker push asia-southeast1-docker.pkg.dev/silicon-airlock-456802-p4/demo/discovery-server:latest
-          docker push asia-southeast1-docker.pkg.dev/silicon-airlock-456802-p4/demo/product-service:latest
-          docker push asia-southeast1-docker.pkg.dev/silicon-airlock-456802-p4/demo/order-service:latest
-          docker push asia-southeast1-docker.pkg.dev/silicon-airlock-456802-p4/demo/inventory-service:latest
-          docker push asia-southeast1-docker.pkg.dev/silicon-airlock-456802-p4/demo/notification-service:latest
+          docker push asia-southeast1-docker.pkg.dev/silicon-airlock-456802-p4/samples/api-gateway:latest
+          docker push asia-southeast1-docker.pkg.dev/silicon-airlock-456802-p4/samples/discovery-server:latest
+          docker push asia-southeast1-docker.pkg.dev/silicon-airlock-456802-p4/samples/product-service:latest
+          docker push asia-southeast1-docker.pkg.dev/silicon-airlock-456802-p4/samples/order-service:latest
+          docker push asia-southeast1-docker.pkg.dev/silicon-airlock-456802-p4/samples/inventory-service:latest
+          docker push asia-southeast1-docker.pkg.dev/silicon-airlock-456802-p4/samples/notification-service:latest
