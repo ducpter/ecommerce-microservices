@@ -28,6 +28,13 @@ spec:
               value: http://keycloak:8080/realms/spring-boot-microservices-realm
             - name: MANAGEMENT_ZIPKIN_TRACING_ENDPOINT
               value: http://zipkin:9411/api/v2/spans
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "256Mi"
+            limits:
+              cpu: "200m"
+              memory: "512Mi"
 ---
 apiVersion: v1
 kind: Service

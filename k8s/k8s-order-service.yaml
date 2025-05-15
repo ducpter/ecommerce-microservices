@@ -32,6 +32,13 @@ spec:
               value: http://zipkin:9411/api/v2/spans
             - name: SPRING_KAFKA_BOOTSTRAPSERVERS
               value: broker:29092
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "256Mi"
+            limits:
+              cpu: "200m"
+              memory: "512Mi"
 ---
 apiVersion: v1
 kind: Service

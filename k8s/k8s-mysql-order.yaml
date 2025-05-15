@@ -26,6 +26,13 @@ spec:
               value: ibatulanand
             - name: MYSQL_PASSWORD
               value: password
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "256Mi"
+            limits:
+              cpu: "200m"
+              memory: "512Mi"
           volumeMounts:
             - name: mysql-order-data
               mountPath: /var/lib/mysql
