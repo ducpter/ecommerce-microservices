@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: discovery-server
-          image: ducp96064/discovery-server:latest
+          image: asia-southeast1-docker.pkg.dev/silicon-airlock-456802-p4/samples/discovery-server:latest
           ports:
             - containerPort: 8761
           env:

@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: notification-service
-          image: ducp96064/notification-service:latest
+          image: asia-southeast1-docker.pkg.dev/silicon-airlock-456802-p4/samples/notification-service:latest
           ports:
             - containerPort: 8080
           env:

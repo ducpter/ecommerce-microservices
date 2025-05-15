@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: inventory-service
-          image: ducp96064/inventory-service:latest
+          image: asia-southeast1-docker.pkg.dev/silicon-airlock-456802-p4/samples/inventory-service:latest
           ports:
             - containerPort: 8080
           env:
