@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql-inventory-deployment
+  labels:
+    app: mysql-inventory
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql-inventory
+  template:
+    metadata:
+      labels:
+        app: mysql-inventory
+    spec:
+      containers:
+        - name: mysql-inventory
+          image: mysql:latest
+          ports:
+            - containerPort: 3306
+          env:
+            # Add environment variables here
+          resources:
+            requests:
+              cpu: "200m"
+              memory: "512Mi"
+            limits:
+              cpu: "500m"
+              memory: "1Gi"
