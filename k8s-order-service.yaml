@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: order-service
-          image: ducp96064/order-service:latest
+          image: asia-southeast1-docker.pkg.dev/silicon-airlock-456802-p4/samples/order-service:latest
           ports:
             - containerPort: 8080
           env:
