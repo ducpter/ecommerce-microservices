@@ -15,7 +15,10 @@ spec:
       containers:
         - name: keycloak
           image: quay.io/keycloak/keycloak:latest
-          command: ["start-dev", "--import-realm"]
+          command: ["/opt/keycloak/bin/kc.sh"]
+          args:
+            - start-dev
+            - --import-realm
           ports:
             - containerPort: 8080
           env:
