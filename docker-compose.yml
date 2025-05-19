@@ -134,7 +134,9 @@ services:
 
   # API Gateway Service Config
   api-gateway:
-    image: ibatulanandjp/api-gateway:latest
+    image: ibatulanandjp/api-gateway:dev
+    build:
+      context: ./api-gateway
     container_name: api-gateway
     pull_policy: always
     ports:
