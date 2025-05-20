@@ -47,8 +47,7 @@ spec:
       targetPort: 3306
 ---
 apiVersion: v1
-kind: kubectl create configmap keycloak-new-realm-config --from-file=new-realm.json
-
+kind: PersistentVolumeClaim
 metadata:
   name: mysql-pvc
 spec:
