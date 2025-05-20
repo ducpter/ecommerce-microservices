@@ -18,7 +18,7 @@ spec:
 
           command: ["/opt/keycloak/bin/kc.sh"]
           args:
-            - start-dev
+            - start
             - --import-realm
           ports:
             - containerPort: 8080
@@ -38,11 +38,12 @@ spec:
             - name: KEYCLOAK_ADMIN_PASSWORD
               value: admin
           volumeMounts:
-            - name: keycloak-realm-data
+            - name: keycloak-realm-volume
               mountPath: /opt/keycloak/data/import/
       volumes:
-        - name: keycloak-realm-data
-          emptyDir: {}
+        - name: keycloak-realm-volume
+          configMap:
+            name: keycloak-realm-config
 ---
 apiVersion: v1
 kind: Service
