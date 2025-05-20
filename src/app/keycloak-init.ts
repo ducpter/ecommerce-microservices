@@ -5,7 +5,7 @@ export function initKeycloak(): Promise<KeycloakService> {
 
   return keycloak.init({
     config: {
-      url: 'http://keycloak:8080',
+      url: 'http://35.240.200.118:8080',
       realm: 'spring-boot-microservices-realm',
       clientId: 'angular-client',
     },

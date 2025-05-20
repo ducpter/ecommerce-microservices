@@ -8,7 +8,7 @@ import { ProductRequest } from '../requests/product-request';
   providedIn: 'root'
 })
 export class ProductServiceService {
-  private API_URL = 'http://localhost:8181/api/product';
+  private API_URL = 'http://35.197.136.113:8181/api/product';
   constructor(private http: HttpClient) { }
 
   getAllProducts(): Observable<Product[]> {
