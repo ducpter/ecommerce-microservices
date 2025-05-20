@@ -20,7 +20,6 @@ spec:
           args:
             - start-dev
             - --import-realm
-          args: ["start-dev", "--import-realm"]
           ports:
             - containerPort: 8080
           env:
