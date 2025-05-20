@@ -20,14 +20,6 @@ public class InventoryService {
 
     @Transactional(readOnly = true)
     public List<InventoryResponse> isInStock(List<String> skuCode) {
-//        // Simulating Timeout
-//        log.info("Wait Started");
-//        try {
-//            Thread.sleep(10000);
-//        } catch (InterruptedException e) {
-//            log.info("Exception from Thread: ", e);
-//        }
-//        log.info("Wait Ended");
 
         return inventoryRepository.findBySkuCodeIn(skuCode).stream()
                 .map(inventory ->
