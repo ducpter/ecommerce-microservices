@@ -1,0 +1,24 @@
+<div class="product-grid">
+  <div class="product-card" *ngFor="let product of products">
+    <img src="https://picsum.photos/150" alt="placeholder" />
+
+    <h2>{{ product.name }}</h2>
+    <p>{{ product.description }}</p>
+    <p class="price">{{ product.price | currency: 'USD' }}</p>
+
+    <label for="quantity">Số lượng:</label>
+    <input
+      type="number"
+      min="1"
+      [(ngModel)]="selectedQuantities[product.name]"
+      [value]="1"
+      class="quantity-input"
+    />
+
+
+    <div class="button-group">
+      <button (click)="addToCart(product)">🛒 Thêm vào giỏ</button>
+      <button class="buy-btn">💳 Mua ngay</button>
+    </div>
+  </div>
+</div>
