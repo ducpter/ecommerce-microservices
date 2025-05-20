@@ -19,7 +19,7 @@ spec:
           command: ["/opt/keycloak/bin/kc.sh"]
           args:
             - start-dev
-#            - --import-realm
+            - --import-realm
             - --hostname-strict=false
           ports:
             - containerPort: 8080
@@ -48,12 +48,12 @@ spec:
               memory: "1Gi"
               cpu: "1000m"
           volumeMounts:
-            - name: keycloak-realm-volume
+            - name: keycloak-new-realm-volume
               mountPath: /opt/keycloak/data/import/
       volumes:
-        - name: keycloak-realm-volume
+        - name: keycloak-new-realm-volume
           configMap:
-            name: keycloak-realm-config
+            name: keycloak-new-realm-config
 ---
 apiVersion: v1
 kind: Service
