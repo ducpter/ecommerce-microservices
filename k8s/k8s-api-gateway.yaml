@@ -25,7 +25,7 @@ spec:
             - name: SERVER_PORT
               value: "8080"
             - name: SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUERURI
-              value: http://keycloak:8080/realms/spring-boot-microservices-realm
+              value: http://35.213.100.123:8080/realms/spring-boot-microservices-realm
             - name: MANAGEMENT_ZIPKIN_TRACING_ENDPOINT
               value: http://zipkin:9411/api/v2/spans
           resources:
