@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: keycloak
-          image: quay.io/keycloak/keycloak:latest
+          image: quay.io/keycloak/keycloak:24.0.1
 
           command: ["/opt/keycloak/bin/kc.sh"]
           args:
@@ -23,16 +23,18 @@ spec:
           ports:
             - containerPort: 8080
           env:
-            - name: DB_VENDOR
-              value: MYSQL
-            - name: DB_ADDR
-              value: keycloak-mysql
-            - name: DB_DATABASE
+            - name: KC_DB
+              value: mysql
+            - name: KC_DB_USERNAME
               value: keycloak
-            - name: DB_USER
-              value: keycloak
-            - name: DB_PASSWORD
+            - name: KC_DB_PASSWORD
               value: password
+            - name: KC_DB_URL_HOST
+              value: keycloak-mysql
+            - name: KC_DB_URL_PORT
+              value: "3306"
+            - name: KC_DB_URL_DATABASE
+              value: keycloak
             - name: KEYCLOAK_ADMIN
               value: admin
             - name: KEYCLOAK_ADMIN_PASSWORD
