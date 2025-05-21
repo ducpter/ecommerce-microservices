@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   name: apigateway-ingress
   annotations:
-    kubernetes.io/ingress.global-static-ip-name: api-gateway-ip  # hoặc IP bạn đã tạo sẵn
+    kubernetes.io/ingress.global-static-ip-name: api-gateway-ingress-ip  # hoặc IP bạn đã tạo sẵn
     networking.gke.io/managed-certificates: apigateway-certificate
     kubernetes.io/ingress.allow-http: "true"
 spec:
@@ -18,3 +18,4 @@ spec:
             name: api-gateway  # Tên service trong cluster
             port:
               number: 8080    # Port service expose
+

@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   name: keycloak-ingress
   annotations:
-    kubernetes.io/ingress.global-static-ip-name: keycloak-ip
+    kubernetes.io/ingress.global-static-ip-name: keycloak-ingress-ip
     networking.gke.io/managed-certificates: keycloak-certificate
     kubernetes.io/ingress.allow-http: "true"
 spec:

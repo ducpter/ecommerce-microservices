@@ -4,4 +4,4 @@ metadata:
   name: apigateway-certificate
 spec:
   domains:
-    - api-gateway.ecommerce-microservices-uet.xyz  # Thay domain thật của bạn
+    - api-gateway.ecommerce-microservices-uet.xyz
