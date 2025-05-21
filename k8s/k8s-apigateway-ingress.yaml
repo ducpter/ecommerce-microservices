@@ -3,9 +3,9 @@ kind: Ingress
 metadata:
   name: apigateway-ingress
   annotations:
-    kubernetes.io/ingress.global-static-ip-name: keycloak-ip  # hoặc IP bạn đã tạo sẵn
+    kubernetes.io/ingress.global-static-ip-name: api-gateway-ip  # hoặc IP bạn đã tạo sẵn
     networking.gke.io/managed-certificates: apigateway-certificate
-    kubernetes.io/ingress.allow-http: "false"
+    kubernetes.io/ingress.allow-http: "true"
 spec:
   rules:
   - host: api-gateway.ecommerce-microservices-uet.xyz  # Thay domain thật
